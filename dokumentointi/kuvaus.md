@@ -5,6 +5,7 @@
 Pelin loputtua pisteet tallennetaan highscore-listalle ja korkeimmat pistemäärät näytetään pelaajalle. Highscore-listaa voi katsoa myös erikseen.
 
 **Käyttäjät:** pelaaja
+
 **Käyttäjän toiminnot:**
   - tarkastele highscorea
   - aloita peli
