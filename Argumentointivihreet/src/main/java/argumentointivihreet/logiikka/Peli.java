@@ -1,17 +1,22 @@
 package argumentointivihreet.logiikka;
 
+import argumentointivihreet.tiedostonkasittely.TiedostoLukija;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Peli {
 
+    private TiedostoLukija lukija;
     private ArrayList<Vaite> vaitteet;
     private ArrayList<String> virheet;
     private int monesVaite;
 
-    public Peli(ArrayList<Vaite> vaitteet, ArrayList<String> virheet) {
-        this.vaitteet = vaitteet;
-        this.virheet = virheet;
+    public Peli(File tiedosto) throws IOException {
+        this.lukija = new TiedostoLukija(tiedosto);
+        this.vaitteet = lukija.getVaitteet();
+        this.virheet = lukija.getVirheet();
         this.monesVaite = 0;
         Collections.shuffle(vaitteet);
     }
@@ -33,9 +38,7 @@ public class Peli {
     }
 
     public boolean vastaa(Vaite vaite, String vastaus) {
-
         return vaite.tarkistaVastaus(vastaus);
-
     }
 
     public Vaite annaVaite() {
@@ -62,6 +65,8 @@ public class Peli {
         for (int i = 0; i < 3; i++) {            
             vaihtoehdot.add(virheetIlmanOikeaaVastausta.get(i));
         }
+        
+        Collections.shuffle(vaihtoehdot);
         
         return vaihtoehdot;
     }

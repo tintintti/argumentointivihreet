@@ -1,6 +1,10 @@
 package argumentointivihreet.logiikka;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -26,31 +30,12 @@ public class PeliTest {
     }
 
     @Before
-    public void setUp() {
-        String virhe1 = "eka virhe";
-        Vaite vaite1 = new Vaite("eka väite", virhe1);
-        String virhe2 = "toka virhe";
-        Vaite vaite2 = new Vaite("toka väite", virhe2);
-        Vaite vaite3 = new Vaite("kolmas vaite", virhe1);
+    public void setUp() throws IOException {
 
-        String virhe3 = "kolmas virhe";
-        String virhe4 = "neljäs virhe";
-        String virhe5 = "viides virhe";
+        this.peli = new Peli(new File("testiVihreet.csv"));
 
-        this.virheet = new ArrayList<>();
-        this.vaitteet = new ArrayList<>();
-
-        this.virheet.add(virhe1);
-        this.virheet.add(virhe2);
-        this.virheet.add(virhe3);
-        this.virheet.add(virhe4);
-        this.virheet.add(virhe5);
-
-        this.vaitteet.add(vaite1);
-        this.vaitteet.add(vaite2);
-        this.vaitteet.add(vaite3);
-
-        this.peli = new Peli(this.vaitteet, this.virheet);
+        this.vaitteet = peli.getVaitteet();
+        this.virheet = peli.getVirheet();
 
     }
 
@@ -70,7 +55,7 @@ public class PeliTest {
     @Test
     public void vastaaPalauttaaFalseKunVastausVaarin() {
         Vaite vaite = this.vaitteet.get(0);
-        boolean vastaus = this.peli.vastaa(vaite, this.virheet.get(4));
+        boolean vastaus = this.peli.vastaa(vaite, "väärä vastaus");
 
         assertEquals(false, vastaus);
     }
@@ -87,11 +72,9 @@ public class PeliTest {
     public void arvoVaihtoehdotPalauttaaNeljaVirhetta() {
         Vaite vaite = this.vaitteet.get(0);
         ArrayList<String> vaihtoehdot = this.peli.arvoVaihtoehdot(vaite);
-        
+
         assertEquals(4, vaihtoehdot.size());
     }
-    
-    
 
     @Test
     public void annaVaitePalauttaaVaitteen() {
@@ -107,7 +90,7 @@ public class PeliTest {
 
         assertNotEquals(v1, v2);
     }
-    
+
     @Test
     public void annaVaitePalauttaaNullKunKaikkiVaitteetOnPalautettuKerran() {
         for (int i = 0; i < this.vaitteet.size(); i++) {

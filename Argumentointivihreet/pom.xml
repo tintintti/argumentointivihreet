@@ -18,6 +18,14 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
+        
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>3.3</version>
+        </dependency>
+
+        
     </dependencies>
 
     <build>
@@ -43,9 +51,11 @@
                 <configuration>
                     <targetClasses>
                         <param>argumentointivihreet.logiikka.*</param>
+                        <param>argumentointivihreet.tiedostonkasittely.*</param>
                     </targetClasses>
                     <targetTests>
                         <param>argumentointivihreet.logiikka.*</param>
+                        <param>argumentointivihreet.tiedostonkasittely.*</param>
                     </targetTests>
                 </configuration>
             </plugin>
