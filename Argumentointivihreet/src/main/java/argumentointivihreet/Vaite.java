@@ -1,4 +1,4 @@
-package argumentointivihreet.logiikka;
+package argumentointivihreet;
 
 import java.util.Objects;
 

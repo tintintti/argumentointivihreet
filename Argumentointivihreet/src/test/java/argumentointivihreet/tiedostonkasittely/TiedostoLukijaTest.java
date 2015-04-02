@@ -1,7 +1,7 @@
 
 package argumentointivihreet.tiedostonkasittely;
 
-import argumentointivihreet.logiikka.Vaite;
+import argumentointivihreet.Vaite;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;

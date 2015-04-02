@@ -1,5 +1,7 @@
 package argumentointivihreet.logiikka;
 
+import argumentointivihreet.Vaite;
+import argumentointivihreet.Pelaaja;
 import argumentointivihreet.tiedostonkasittely.TiedostoLukija;
 import java.io.File;
 import java.io.IOException;
@@ -12,13 +14,17 @@ public class Peli {
     private ArrayList<Vaite> vaitteet;
     private ArrayList<String> virheet;
     private int monesVaite;
+    private Pelaaja pelaaja;
+    private HighScore hs;
 
-    public Peli(File tiedosto) throws IOException {
-        this.lukija = new TiedostoLukija(tiedosto);
+    public Peli(File argumentit, File highscore) throws IOException {
+        this.lukija = new TiedostoLukija(argumentit);
         this.vaitteet = lukija.getVaitteet();
         this.virheet = lukija.getVirheet();
         this.monesVaite = 0;
         Collections.shuffle(vaitteet);
+        this.pelaaja = new Pelaaja();
+        this.hs = new HighScore(highscore);
     }
 
     public ArrayList<Vaite> getVaitteet() {
@@ -37,10 +43,22 @@ public class Peli {
         this.virheet = virheet;
     }
 
-    public boolean vastaa(Vaite vaite, String vastaus) {
-        return vaite.tarkistaVastaus(vastaus);
+    public Pelaaja getPelaaja() {
+        return pelaaja;
     }
 
+    public void setPelaaja(Pelaaja pelaaja) {
+        this.pelaaja = pelaaja;
+    }
+    
+    public boolean vastaa(Vaite vaite, String vastaus) {
+        if (vaite.tarkistaVastaus(vastaus)) {
+            this.pelaaja.lisaaPiste();
+            return true;
+        }
+        return false;
+    }
+    
     public Vaite annaVaite() {
         
         if (monesVaite < this.vaitteet.size()) {
@@ -71,4 +89,16 @@ public class Peli {
         return vaihtoehdot;
     }
 
+    
+    public ArrayList<Pelaaja> naytaHS() throws IOException {
+        return hs.lueHS();
+    }
+    
+    public void paivitaHS() throws IOException {
+        ArrayList<Pelaaja> score = hs.lueHS();
+        
+        score.add(pelaaja);
+        hs.paivitaHS(score);
+    }
+    
 }

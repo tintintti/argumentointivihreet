@@ -8,15 +8,13 @@ import java.util.logging.Logger;
 public class Main {
 
     public static void main(String[] args) {
-        
+
         try {
             TekstiKali kali = new TekstiKali();
             kali.kaynnista();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
+
     }
 }

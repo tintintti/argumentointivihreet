@@ -1,10 +1,9 @@
 package argumentointivihreet.logiikka;
 
+import argumentointivihreet.Vaite;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -32,7 +31,7 @@ public class PeliTest {
     @Before
     public void setUp() throws IOException {
 
-        this.peli = new Peli(new File("testiVihreet.csv"));
+        this.peli = new Peli(new File("testiVihreet.csv"), new File("testiHighscore.csv"));
 
         this.vaitteet = peli.getVaitteet();
         this.virheet = peli.getVirheet();

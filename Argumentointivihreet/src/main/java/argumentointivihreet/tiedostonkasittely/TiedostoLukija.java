@@ -1,7 +1,7 @@
 
 package argumentointivihreet.tiedostonkasittely;
 
-import argumentointivihreet.logiikka.Vaite;
+import argumentointivihreet.Vaite;
 import com.opencsv.CSVReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,10 +27,10 @@ public class TiedostoLukija {
     }
 
     private void lueVaitteet() throws IOException {
-        String[] nextLine;
+        String[] rivi;
         
-        while((nextLine = this.lukija.readNext()) != null) {
-            vaitteet.add(new Vaite(nextLine[0], nextLine[1], nextLine[2]));
+        while((rivi = this.lukija.readNext()) != null) {
+            vaitteet.add(new Vaite(rivi[0], rivi[1], rivi[2]));
         }
     }
     
