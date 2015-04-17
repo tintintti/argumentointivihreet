@@ -79,14 +79,14 @@ public class PeliTest {
     }
 
     @Test
-    public void annaVaitePalauttaaVaitteen() {
+    public void annaVaitePalauttaaVaitteen() throws IOException {
         Vaite vaite = this.peli.annaVaite();
 
         assertNotNull(vaite);
     }
 
     @Test
-    public void annaVaitePalauttaaEriKerroillaEriVaitteet() {
+    public void annaVaitePalauttaaEriKerroillaEriVaitteet() throws IOException {
         Vaite v1 = this.peli.annaVaite();
         Vaite v2 = this.peli.annaVaite();
 
@@ -94,7 +94,7 @@ public class PeliTest {
     }
 
     @Test
-    public void annaVaitePalauttaaNullKunKaikkiVaitteetOnPalautettuKerran() {
+    public void annaVaitePalauttaaNullKunKaikkiVaitteetOnPalautettuKerran() throws IOException {
         for (int i = 0; i < this.vaitteet.size(); i++) {
             this.peli.annaVaite();
         }

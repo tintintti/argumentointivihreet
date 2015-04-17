@@ -8,3 +8,4 @@
 **2.4.** *2h* Highscoren toteuttaminen
 **13.4.** *30min* Vastausaikaa laskeva Laskuri-luokka + testejä
 **17.4.** *4h* Netbeans-ongelmia, JavaDocien kirjoittamista
+**17.4.** *4h30min* Graafisen käyttöliittymän koodausta ja opettelua, sekvenssikaaviot + uusi luokkakaavio

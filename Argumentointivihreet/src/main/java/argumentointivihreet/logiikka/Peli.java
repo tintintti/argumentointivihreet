@@ -83,8 +83,9 @@ public class Peli {
      * jotta väitteiden järjestys vaihtelisi eri pelikerroilla.
      * 
      * @return Järjestyksessä seuraava väite
+     * @throws java.io.IOException
      */
-    public Vaite annaVaite() {
+    public Vaite annaVaite() throws IOException  {
         
         if (monesVaite < this.vaitteet.size()) {
             this.ajastin = new Ajastin();
@@ -95,6 +96,7 @@ public class Peli {
             return palautettava;
         }
         
+        hs.paivitaHS(pelaaja);
         return null;
     }
     
@@ -134,13 +136,5 @@ public class Peli {
         return hs.lueHS();
     }
     
-    /**
-     * @see argumentointivihreet.logiikka.HighScore#paivitaHS(Pelaaja)
-     * 
-     * @throws IOException 
-     */
-    public void paivitaHS() throws IOException {
-        hs.paivitaHS(pelaaja);
-    }
     
 }

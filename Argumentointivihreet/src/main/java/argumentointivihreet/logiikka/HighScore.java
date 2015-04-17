@@ -16,6 +16,8 @@ import java.util.ArrayList;
 
 public class HighScore {
     private File tiedosto;
+    private HighScoreKirjoittaja kirjoittaja;
+    private HighScoreLukija lukija;
 
     public HighScore(File tiedosto) throws IOException {
         this.tiedosto = tiedosto;
@@ -35,7 +37,7 @@ public class HighScore {
 
         highscore.add(lisattava);
 
-        HighScoreKirjoittaja kirjoittaja = new HighScoreKirjoittaja(tiedosto);
+        this.kirjoittaja = new HighScoreKirjoittaja(tiedosto);
         kirjoittaja.kirjoita(highscore);
     }
     
@@ -49,7 +51,7 @@ public class HighScore {
      * @throws IOException 
      */
     public ArrayList<Pelaaja> lueHS() throws IOException {
-        HighScoreLukija lukija = new HighScoreLukija(tiedosto);
+        this.lukija = new HighScoreLukija(tiedosto);
         return lukija.lueHighScore();
     }
     

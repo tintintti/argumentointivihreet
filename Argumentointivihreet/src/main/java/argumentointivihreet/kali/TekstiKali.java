@@ -76,11 +76,6 @@ public class TekstiKali {
             Vaite vaite = peli.annaVaite();
 
             if (vaite == null) {
-                try {
-                    peli.paivitaHS();
-                } catch (IOException ex) {
-                    System.out.println("Virhe päivitettäessä highscore-listaa.");
-                }
                 break;
             }
 
