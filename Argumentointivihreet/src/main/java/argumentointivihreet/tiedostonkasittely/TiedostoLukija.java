@@ -1,7 +1,7 @@
 
 package argumentointivihreet.tiedostonkasittely;
 
-import argumentointivihreet.Vaite;
+import argumentointivihreet.data.Vaite;
 import com.opencsv.CSVReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,7 +9,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
+/**
+ * 
+ * Luokka tarjoaa metodit väitteiden ja niihin liittyvien argumentointivirheiden lukemiseen CSV-tiedostosta
+ * 
+ */
 public class TiedostoLukija {
     CSVReader lukija;
     private File tiedosto;
@@ -25,7 +29,7 @@ public class TiedostoLukija {
     public ArrayList<Vaite> getVaitteet() throws IOException {
         return this.vaitteet;
     }
-
+    
     private void lueVaitteet() throws IOException {
         String[] rivi;
         

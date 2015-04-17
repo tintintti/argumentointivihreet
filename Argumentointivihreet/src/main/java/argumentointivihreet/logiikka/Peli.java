@@ -1,13 +1,20 @@
 package argumentointivihreet.logiikka;
 
-import argumentointivihreet.Vaite;
-import argumentointivihreet.Pelaaja;
+import argumentointivihreet.data.Vaite;
+import argumentointivihreet.data.Pelaaja;
 import argumentointivihreet.tiedostonkasittely.TiedostoLukija;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+
+/**
+ * 
+ * Luokka hallinnoi Highscore-listaa ja tarjoaa metodit vastaamiseen, pelaajalle pisteiden lisäämiseen,
+ * sekä väitteiden ja vastausvaihtoehtojen hakemiseen
+ * 
+ */
 public class Peli {
 
     private TiedostoLukija lukija;
@@ -16,6 +23,7 @@ public class Peli {
     private int monesVaite;
     private Pelaaja pelaaja;
     private HighScore hs;
+    private Ajastin ajastin;
 
     public Peli(File argumentit, File highscore) throws IOException {
         this.lukija = new TiedostoLukija(argumentit);
@@ -25,22 +33,15 @@ public class Peli {
         Collections.shuffle(vaitteet);
         this.pelaaja = new Pelaaja();
         this.hs = new HighScore(highscore);
+        this.ajastin = new Ajastin();
     }
 
     public ArrayList<Vaite> getVaitteet() {
         return vaitteet;
     }
 
-    public void setVaitteet(ArrayList<Vaite> vaitteet) {
-        this.vaitteet = vaitteet;
-    }
-
     public ArrayList<String> getVirheet() {
         return virheet;
-    }
-
-    public void setVirheet(ArrayList<String> virheet) {
-        this.virheet = virheet;
     }
 
     public Pelaaja getPelaaja() {
@@ -51,17 +52,43 @@ public class Peli {
         this.pelaaja = pelaaja;
     }
     
+    /**
+     * 
+     * Metodi lisää pelaajalle pisteen, mikäli pelaajan antama vastaus on oikein ja mahdollisia 
+     * lisäpisteitä pelaajan vastausajan mukaan
+     * 
+     * @param vaite Väite, josta vastaus tarkistetaan
+     * @param vastaus Pelaajan valitsema vastaus
+     * 
+     * @see argumentointivihreet.data.Vaite#tarkistaVastaus(String) 
+     * @see argumentointivihreet.data.Pelaaja#lisaaPiste() 
+     * @see argumentointivihreet.data.Pelaaja#lisaaPisteita(int) 
+     * @see argumentointivihreet.logiikka.Ajastin
+     * 
+     * @return true, jos vastaus on oikein, false jos väärin
+     */
     public boolean vastaa(Vaite vaite, String vastaus) {
         if (vaite.tarkistaVastaus(vastaus)) {
             this.pelaaja.lisaaPiste();
+            this.pelaaja.lisaaPisteita(ajastin.getAika());
             return true;
         }
         return false;
     }
     
+    /**
+     * 
+     * Metodi palauttaa vaitteet-listalta niin monennen väitteen, kuin mitä väitteitä on palautettu 
+     * ja tallentaa palautettujen väitteiden määrän muuttujaan monesVaite. Vaitteet-lista sekoitetaan konstruktorissa,
+     * jotta väitteiden järjestys vaihtelisi eri pelikerroilla.
+     * 
+     * @return Järjestyksessä seuraava väite
+     */
     public Vaite annaVaite() {
         
         if (monesVaite < this.vaitteet.size()) {
+            this.ajastin = new Ajastin();
+            this.ajastin.start();
             Vaite palautettava = this.vaitteet.get(monesVaite);
             monesVaite++;
 
@@ -71,12 +98,20 @@ public class Peli {
         return null;
     }
     
-    public ArrayList<String> arvoVaihtoehdot(Vaite v) {
+    /**
+     * 
+     * Metodi lisää vaihtoehdot-listalle ensin oikean vastausksen väitteelle, sekoittaa sen jälkeen
+     * jäljelle jääneet vastausvaihtoehdot ja lisää niistä kolme vaihtoehdot-listalle, sekä sekoittaa vaihtoehdot-listan
+     * 
+     * @param vaite Väite, jolle vastausvaihtoehdot haetaan
+     * @return Vaihtoehdot-lista jolla on oikea vastaus sekä kolme muuta vastausvaihtoehtoa sekaisin
+     */
+    public ArrayList<String> arvoVaihtoehdot(Vaite vaite) {
         ArrayList<String> vaihtoehdot = new ArrayList<>();
         ArrayList<String> virheetIlmanOikeaaVastausta = new ArrayList<>(virheet);
         
-        vaihtoehdot.add(v.getVirhe());
-        virheetIlmanOikeaaVastausta.remove(v.getVirhe());
+        vaihtoehdot.add(vaite.getVirhe());
+        virheetIlmanOikeaaVastausta.remove(vaite.getVirhe());
         
         Collections.shuffle(virheetIlmanOikeaaVastausta);
         
@@ -89,16 +124,23 @@ public class Peli {
         return vaihtoehdot;
     }
 
-    
+    /**
+     * @see argumentointivihreet.logiikka.HighScore#lueHS() 
+     * 
+     * @return Highscore-lista
+     * @throws IOException 
+     */
     public ArrayList<Pelaaja> naytaHS() throws IOException {
         return hs.lueHS();
     }
     
+    /**
+     * @see argumentointivihreet.logiikka.HighScore#paivitaHS(Pelaaja)
+     * 
+     * @throws IOException 
+     */
     public void paivitaHS() throws IOException {
-        ArrayList<Pelaaja> score = hs.lueHS();
-        
-        score.add(pelaaja);
-        hs.paivitaHS(score);
+        hs.paivitaHS(pelaaja);
     }
     
 }

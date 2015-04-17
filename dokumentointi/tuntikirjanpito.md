@@ -6,3 +6,5 @@
 **27.3.** *5h* OpenCSV:hen tarkemmin tutustuminen, CSV-tiedostoista väitteet peliin lukevan luokan toteutus ja testien kirjoittaminen, vanhojen testien korjaamista. Esimerkkiväitteiden etsimistä peliä varten.
 **30.3.** *2h* Esimerkkiväitteiden etsiminen, ohjelmointi
 **2.4.** *2h* Highscoren toteuttaminen
+**13.4.** *30min* Vastausaikaa laskeva Laskuri-luokka + testejä
+**17.4.** *4h* Netbeans-ongelmia, JavaDocien kirjoittamista

@@ -1,12 +1,18 @@
 
 package argumentointivihreet.logiikka;
 
-import argumentointivihreet.Pelaaja;
+import argumentointivihreet.data.Pelaaja;
 import argumentointivihreet.tiedostonkasittely.HighScoreKirjoittaja;
 import argumentointivihreet.tiedostonkasittely.HighScoreLukija;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+
+/**
+ * 
+ * Luokka tarjoaan metodit Highscore-tiedoston lukemiseen ja päivittämiseen.
+ * 
+ */
 
 public class HighScore {
     private File tiedosto;
@@ -15,11 +21,33 @@ public class HighScore {
         this.tiedosto = tiedosto;
     }
     
-    public void paivitaHS(ArrayList<Pelaaja> score) throws IOException {
+    /**
+     * 
+     * Metodi päivittää higscore-tiedostoon annetun pelaajan pisteet
+     * 
+     * @see argumentointivihreet.tiedostonkasittely.HighScoreKirjoittaja#kirjoita(ArrayList<Pelaaja>) 
+     * 
+     * @param lisattava Highscore-listalle lisättävä pelaaja
+     * @throws IOException 
+     */
+    public void paivitaHS(Pelaaja lisattava) throws IOException {
+        ArrayList<Pelaaja> highscore = this.lueHS();
+
+        highscore.add(lisattava);
+
         HighScoreKirjoittaja kirjoittaja = new HighScoreKirjoittaja(tiedosto);
-        kirjoittaja.kirjoita(score);
+        kirjoittaja.kirjoita(highscore);
     }
     
+    /**
+     * 
+     * Metodi lukee tiedostosta Highscore-listan
+     * 
+     * @see argumentointivihreet.tiedostonkasittely.HighScoreLukija#lueHighScore() 
+     * 
+     * @return Highscore-lista
+     * @throws IOException 
+     */
     public ArrayList<Pelaaja> lueHS() throws IOException {
         HighScoreLukija lukija = new HighScoreLukija(tiedosto);
         return lukija.lueHighScore();

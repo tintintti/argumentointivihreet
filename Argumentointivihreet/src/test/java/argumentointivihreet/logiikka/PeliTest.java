@@ -1,6 +1,7 @@
 package argumentointivihreet.logiikka;
 
-import argumentointivihreet.Vaite;
+import argumentointivihreet.data.Pelaaja;
+import argumentointivihreet.data.Vaite;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,6 +34,8 @@ public class PeliTest {
 
         this.peli = new Peli(new File("testiVihreet.csv"), new File("testiHighscore.csv"));
 
+        peli.setPelaaja(new Pelaaja());
+        
         this.vaitteet = peli.getVaitteet();
         this.virheet = peli.getVirheet();
 

@@ -1,5 +1,12 @@
 
-package argumentointivihreet;
+package argumentointivihreet.data;
+
+/**
+ * 
+ * Luokkaan tallennetaan pelaajan nimimerkin ja pistetilanteen, ja se tarjoaa metodit
+ * pisteiden lisäämiseen pelaajalle
+ * 
+ */
 
 public class Pelaaja implements Comparable<Pelaaja>{
     private String nimi;
@@ -30,8 +37,24 @@ public class Pelaaja implements Comparable<Pelaaja>{
         this.pisteet = pisteet;
     }
     
+    /** 
+     * 
+     * Metodi lisää yhden pisteen pelaajalle
+     * 
+     */
     public void lisaaPiste() {
         this.pisteet++;
+    }
+
+    /** 
+     * 
+     * Metodi lisää pyydetyn määrän pisteitä pelaajalle
+     * 
+     * @param maara Lisättävien pisteiden määrä
+     *
+     */
+    public void lisaaPisteita(int maara) {
+        this.pisteet += maara;
     }
 
     @Override

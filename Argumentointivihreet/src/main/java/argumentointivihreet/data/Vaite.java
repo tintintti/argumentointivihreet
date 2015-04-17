@@ -1,6 +1,12 @@
-package argumentointivihreet;
+package argumentointivihreet.data;
 
 import java.util.Objects;
+
+/** 
+ * 
+ * Luokkaan tallennetaan väite, sen sanoja sekä argumentointivirhe, joka väitteessä on
+ * 
+ */
 
 public class Vaite {
 
@@ -40,7 +46,15 @@ public class Vaite {
         this.virhe = virhe;
     }
     
-
+    /**
+     * 
+    * Metodi tarkistaa onko annettu vastaus sama kuin väitteeseen liittyvä argumentointivirhe
+    *
+    * @param vastaus Tarkistettava vastaus
+    *
+    * @return true, jos vastaus on oikein, false jos vastaus on väärin
+    * 
+    */
     public boolean tarkistaVastaus(String vastaus) {
 
         if (this.virhe.equals(vastaus)) {
