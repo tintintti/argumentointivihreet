@@ -14,7 +14,7 @@ public class Ajastin extends Thread {
     private int aika;
 
     public Ajastin() {
-        this.aika = 10;
+        this.aika = 30;
     }
 
     public int getAika() {
@@ -25,7 +25,7 @@ public class Ajastin extends Thread {
      * Metodi resetoi laskurin takaisin alkuperäiseen arvoon
      */
     public void resetoi() {
-        this.aika = 10;
+        this.aika = 30;
     }
     
     @Override

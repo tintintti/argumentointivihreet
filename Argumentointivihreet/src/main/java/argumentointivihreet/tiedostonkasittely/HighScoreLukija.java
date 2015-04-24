@@ -32,7 +32,7 @@ public class HighScoreLukija {
 
         while (true) {
             rivi = this.lukija.readNext();
-            if (rivi[0].equals("")) {
+            if (rivi == null || rivi[0] == null || rivi[0].equals("")) {
                 break;
             }
             pelaajat.add(new Pelaaja(rivi[0], Integer.parseInt(rivi[1])));

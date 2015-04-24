@@ -1,5 +1,5 @@
 
-package argumentointivihreet.kali;
+package argumentointivihreet.kali.kuuntelija;
 
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import javax.swing.JPanel;
  *
  * 
  */
-public class HSKuuntelija implements ActionListener{
+public class TakaisinKuuntelija implements ActionListener{
     private CardLayout cl;
     private JPanel panel;
 
-    public HSKuuntelija(CardLayout cl, JPanel panel) {
+    public TakaisinKuuntelija(CardLayout cl, JPanel panel) {
         this.cl = cl;
         this.panel = panel;
     }

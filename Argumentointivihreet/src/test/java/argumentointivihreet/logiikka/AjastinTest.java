@@ -32,20 +32,20 @@ public class AjastinTest {
     }
 
     @Test
-    public void konstruktoriAsettaaAjaksiKymmeneSek() {
-        assertEquals(10, this.ajastin.getAika());
+    public void konstruktoriAsettaaAjaksi30Sek() {
+        assertEquals(30, this.ajastin.getAika());
     }
     
     @Test
     public void laskuriPalauttaaOikeanAjanKunSeOnJuuriKaynnistetty() {
         ajastin.start();
-        assertEquals(10, ajastin.getAika());
+        assertEquals(30, ajastin.getAika());
     }
     
     @Test
     public void laskuriPalauttaaOikeanArvonKunSeOnKaynytHetken() throws InterruptedException {
         ajastin.start();
         Thread.sleep(5001);
-        assertEquals(5, ajastin.getAika());
+        assertEquals(25, ajastin.getAika());
     }
 }
