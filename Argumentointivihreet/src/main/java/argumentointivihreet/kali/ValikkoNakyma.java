@@ -1,4 +1,3 @@
-
 package argumentointivihreet.kali;
 
 import argumentointivihreet.kali.kuuntelija.ValikkoKuuntelija;
@@ -13,7 +12,8 @@ import javax.swing.JPanel;
 /**
  * Luokka luo pelin valikkonäkymän sekä tarjoaa metodin näymän päivittämiseen
  */
-public class ValikkoNakyma extends JPanel implements PaivitettavaNakyma{
+public class ValikkoNakyma extends JPanel implements PaivitettavaNakyma {
+
     private CardLayout cl;
     private JPanel parent;
     private PaivitettavaNakyma hsNakyma;
@@ -21,20 +21,20 @@ public class ValikkoNakyma extends JPanel implements PaivitettavaNakyma{
     private PaivitettavaNakyma alku;
     private Peli peli;
 
-    public ValikkoNakyma(CardLayout cl, JPanel parent, Peli peli, PaivitettavaNakyma hsNakyma, PaivitettavaNakyma alku,PaivitettavaNakyma peliNakyma) {
+    public ValikkoNakyma(CardLayout cl, JPanel parent, Peli peli, PaivitettavaNakyma hsNakyma, PaivitettavaNakyma alku, PaivitettavaNakyma peliNakyma) {
         this.alku = alku;
         this.peliNakyma = peliNakyma;
         this.cl = cl;
         this.parent = parent;
         this.hsNakyma = hsNakyma;
-        
+
         luoKomponentit();
     }
-    
+
     private void luoKomponentit() {
-        
+
         this.setLayout(new GridLayout(3, 1));
-        
+
         JButton pelaa = new JButton("Pelaa");
         JButton hs = new JButton("Highscore");
         JButton lopeta = new JButton("Lopeta");
@@ -49,25 +49,25 @@ public class ValikkoNakyma extends JPanel implements PaivitettavaNakyma{
         this.add(hs);
         this.add(lopeta);
     }
-    
+
     @Override
     public void paivitaNakyma() {
         try {
             this.peli = new Peli(new File("vihreet.csv"), new File("highscore.csv"));
             alku.setPeli(peli);
             peliNakyma.setPeli(peli);
-            
+
             alku.paivitaNakyma();
             peliNakyma.paivitaNakyma();
-            
+
         } catch (IOException ex) {
             System.out.println(":((:(( " + ex.getLocalizedMessage());
         }
     }
-    
+
     @Override
     public void setPeli(Peli peli) {
         this.peli = peli;
     }
-    
+
 }

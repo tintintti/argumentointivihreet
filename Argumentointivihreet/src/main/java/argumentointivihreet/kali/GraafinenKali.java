@@ -39,17 +39,16 @@ public class GraafinenKali implements Runnable {
 
     private void luoKomponentit(Container container) throws IOException {
         this.peli = new Peli(new File("vihreet.csv"), new File("highscore.csv"));
-        
+
         JPanel panel = new JPanel();
         CardLayout cl = new CardLayout();
         panel.setLayout(cl);
-        
+
         HSNakyma hsNakyma = new HSNakyma(peli, cl, panel);
         AlkuNakyma alkuNakyma = new AlkuNakyma(peli, cl, panel);
         LoppuNakyma loppu = new LoppuNakyma(cl, panel, peli, hsNakyma);
         PeliNakyma peliNakyma = new PeliNakyma(cl, panel, loppu, peli);
         ValikkoNakyma valikkoNakyma = new ValikkoNakyma(cl, panel, peli, hsNakyma, alkuNakyma, peliNakyma);
-
 
         panel.add(valikkoNakyma, "valikko");
         panel.add(peliNakyma, "peli");
@@ -61,6 +60,5 @@ public class GraafinenKali implements Runnable {
 
         container.add(panel);
     }
-
 
 }

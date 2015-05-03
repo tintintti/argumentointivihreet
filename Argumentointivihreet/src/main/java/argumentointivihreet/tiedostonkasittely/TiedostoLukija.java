@@ -1,4 +1,3 @@
-
 package argumentointivihreet.tiedostonkasittely;
 
 import argumentointivihreet.data.Vaite;
@@ -10,11 +9,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * 
- * Luokka tarjoaa metodit väitteiden ja niihin liittyvien argumentointivirheiden lukemiseen CSV-tiedostosta
- * 
+ *
+ * Luokka tarjoaa metodit väitteiden ja niihin liittyvien argumentointivirheiden
+ * lukemiseen CSV-tiedostosta
+ *
  */
 public class TiedostoLukija {
+
     CSVReader lukija;
     private File tiedosto;
     private ArrayList<Vaite> vaitteet;
@@ -29,18 +30,18 @@ public class TiedostoLukija {
     public ArrayList<Vaite> getVaitteet() throws IOException {
         return this.vaitteet;
     }
-    
+
     private void lueVaitteet() throws IOException {
         String[] rivi;
-        
-        while((rivi = this.lukija.readNext()) != null) {
+
+        while ((rivi = this.lukija.readNext()) != null) {
             vaitteet.add(new Vaite(rivi[0], rivi[1], rivi[2]));
         }
     }
-    
+
     public ArrayList<String> getVirheet() {
         ArrayList<String> virheet = lueVirheet();
-        
+
         return virheet;
     }
 
@@ -53,5 +54,5 @@ public class TiedostoLukija {
         }
         return virheet;
     }
-            
+
 }

@@ -1,4 +1,3 @@
-
 package argumentointivihreet.kali.kuuntelija;
 
 import java.awt.CardLayout;
@@ -8,9 +7,10 @@ import javax.swing.JPanel;
 
 /**
  *
- * 
+ *
  */
-public class TakaisinKuuntelija implements ActionListener{
+public class TakaisinKuuntelija implements ActionListener {
+
     private CardLayout cl;
     private JPanel panel;
 
@@ -18,10 +18,10 @@ public class TakaisinKuuntelija implements ActionListener{
         this.cl = cl;
         this.panel = panel;
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent ae) {
         cl.show(panel, "valikko");
     }
-    
+
 }

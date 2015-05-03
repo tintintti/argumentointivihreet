@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 
 /**
  *
- * Luokka kuuntelee valikkonäkymän nappeja ja vaihtaa CardLayoutin näkymää sen mukaan
- * mitä napeista painetaan
+ * Luokka kuuntelee valikkonäkymän nappeja ja vaihtaa CardLayoutin näkymää sen
+ * mukaan mitä napeista painetaan
  *
  */
 public class ValikkoKuuntelija implements ActionListener {
@@ -28,8 +28,8 @@ public class ValikkoKuuntelija implements ActionListener {
     private PaivitettavaNakyma peliNakyma;
     private PaivitettavaNakyma alku;
 
-    public ValikkoKuuntelija(Peli peli, JPanel panel, JButton pelaa, JButton hs, JButton lopeta, 
-                             CardLayout cl, PaivitettavaNakyma hsNakyma, PaivitettavaNakyma peliNakyma, PaivitettavaNakyma alku) {
+    public ValikkoKuuntelija(Peli peli, JPanel panel, JButton pelaa, JButton hs, JButton lopeta,
+            CardLayout cl, PaivitettavaNakyma hsNakyma, PaivitettavaNakyma peliNakyma, PaivitettavaNakyma alku) {
         this.pelaa = pelaa;
         this.hs = hs;
         this.lopeta = lopeta;
@@ -49,22 +49,22 @@ public class ValikkoKuuntelija implements ActionListener {
             this.hsNakyma.paivitaNakyma();
             cl.show(panel, "hs");
         }
-        if(ae.getSource() == pelaa) {
+        if (ae.getSource() == pelaa) {
             try {
                 this.peli = new Peli(new File("vihreet.csv"), new File("highscore.csv"));
-                
+
                 alku.setPeli(peli);
                 peliNakyma.setPeli(peli);
-                
+
                 alku.paivitaNakyma();
                 peliNakyma.paivitaNakyma();
-                
+
             } catch (IOException ex) {
                 System.out.println("Peliä ei voitu käynnistää");
             }
-            
+
             cl.show(panel, "aloitus");
         }
     }
-    
+
 }
