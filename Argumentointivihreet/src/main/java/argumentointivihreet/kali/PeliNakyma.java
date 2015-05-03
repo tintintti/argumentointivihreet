@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 /**
- *
+ * Luokka luo pelinäkymän sekä tarjoaa metodin näkymän päivittämiseen
  */
 public class PeliNakyma extends JPanel implements PaivitettavaNakyma {
 

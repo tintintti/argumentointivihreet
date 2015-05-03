@@ -1,14 +1,11 @@
 package argumentointivihreet.kali;
 
-import argumentointivihreet.kali.kuuntelija.ValikkoKuuntelija;
 import argumentointivihreet.logiikka.Peli;
 import java.awt.CardLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.io.File;
 import java.io.IOException;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
@@ -16,12 +13,12 @@ import javax.swing.WindowConstants;
 /**
  *
  */
-public class Kali implements Runnable {
+public class GraafinenKali implements Runnable {
 
     private Peli peli;
     private JFrame frame;
 
-    public Kali() {
+    public GraafinenKali() {
     }
 
     @Override
@@ -34,7 +31,6 @@ public class Kali implements Runnable {
         try {
             luoKomponentit(frame.getContentPane());
         } catch (IOException ex) {
-            System.out.println("ei toimi :(");;
         }
 
         frame.pack();

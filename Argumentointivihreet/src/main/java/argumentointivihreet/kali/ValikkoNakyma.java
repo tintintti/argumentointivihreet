@@ -11,7 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
- *
+ * Luokka luo pelin valikkonäkymän sekä tarjoaa metodin näymän päivittämiseen
  */
 public class ValikkoNakyma extends JPanel implements PaivitettavaNakyma{
     private CardLayout cl;

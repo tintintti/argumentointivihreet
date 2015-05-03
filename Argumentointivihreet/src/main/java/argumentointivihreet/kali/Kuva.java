@@ -55,7 +55,7 @@ public class Kuva extends JPanel {
             graphics.drawImage(paa, 0, 0, this);
             graphics.drawImage(suu, 0, suunSijainti, this);
         } catch (IOException ex) {
-            System.out.println(":(( " + ex.getLocalizedMessage());
+            
         }
 
     }

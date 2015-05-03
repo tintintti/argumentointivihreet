@@ -1,12 +1,12 @@
 package argumentointivihreet;
 
-import argumentointivihreet.kali.Kali;
+import argumentointivihreet.kali.GraafinenKali;
 import javax.swing.SwingUtilities;
 
 public class Main {
 
     public static void main(String[] args) {
-        Kali kali = new Kali();
+        GraafinenKali kali = new GraafinenKali();
         SwingUtilities.invokeLater(kali);
 
     }

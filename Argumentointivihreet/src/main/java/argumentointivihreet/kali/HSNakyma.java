@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 /**
- *
+ * Luokka luo näkymän, jossa näytetään Highscore-listaus sekä tarjoaa metodin näkymän päivittämiseen
  */
 public class HSNakyma extends JPanel implements PaivitettavaNakyma {
 

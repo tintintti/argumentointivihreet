@@ -11,3 +11,4 @@
 **17.4.** *4h30min* Graafisen käyttöliittymän koodausta ja opettelua, sekvenssikaaviot + uusi luokkakaavio
 **20.4.** *2h* Graafisen käyttöliittymän koodailua.
 **24.4.** *4h* Graafisen käyttöliittymän koodailua, kuvanmuokkausta
+**3.10.** *2h* Dokumentointia
